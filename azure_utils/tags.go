@@ -1,6 +1,4 @@
-package format
-
-// Formats Azure response data
+package azure_utils
 
 import (
 	"context"
@@ -10,8 +8,8 @@ import (
 	"github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/compute/armcompute"
 )
 
-// GetTagsFromVirtualMachines: Given a credential, call the Azure API and page virtual machines
-// Returns a map of VM ID to tags
+// GetTagsFromVirtualMachines: Given a credential, call the Azure API and page virtual machines.
+// Returns a map of VM ID to tags.
 func GetVirtualMachineTags(cred *azidentity.ClientSecretCredential, subscriptionId string) (map[string]map[string]interface{}, error) {
 	vmClient, err := armcompute.NewVirtualMachinesClient(subscriptionId, cred, nil)
 	if err != nil {

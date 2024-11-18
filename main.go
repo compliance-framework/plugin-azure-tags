@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	"github.com/compliance-framework/plugin-azure-tags/format"
+	"github.com/compliance-framework/plugin-azure-tags/azure_utils"
 
 	policyManager "github.com/chris-cmsoft/concom/policy-manager"
 	"github.com/chris-cmsoft/concom/runner"
@@ -54,7 +54,7 @@ func (l *AzureTagsPlugin) Configure(req *proto.ConfigureRequest) (*proto.Configu
 }
 
 func (l *AzureTagsPlugin) PrepareForEval(req *proto.PrepareForEvalRequest) (*proto.PrepareForEvalResponse, error) {
-	tags, err := format.GetVirtualMachineTags(l.credential, l.cliConfig.SubscriptionId)
+	tags, err := azure_utils.GetVirtualMachineTags(l.credential, l.cliConfig.SubscriptionId)
 	if err != nil {
 		return nil, err
 	}
