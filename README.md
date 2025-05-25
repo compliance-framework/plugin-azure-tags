@@ -1,8 +1,18 @@
-# Compliance Framework Plugin Template
+# Azure Virtual Machine Tags Plugin
 
-This is a template for building a compliance framework plugin.
+This is a plugin for checking Azure Virtual Machine Tags against policies. Policies are evaluated (and should be defined) for individual machines in order to identify machines from violations.
 
-Inspect main.go for a detailed description of how to build the plugin.
+The plugin requires a config with the following values to be passed:
+
+```go
+{
+    SubscriptionId: "" // The Azure subscription ID
+    TenantId:       "", // The client's tenant ID
+    ClientID:       "", // The client ID
+}
+```
+
+It also requires the environment variable `AZURE_CLIENT_SECRET` to be set.
 
 ## Prerequisites
 
@@ -28,4 +38,3 @@ agent --plugin=[PATH_TO_YOUR_BINARY]
 
 Once you are ready to release your plugin, you need only create a release in Github, and the plugin binaries
 will be added as artifacts on the release page
-
